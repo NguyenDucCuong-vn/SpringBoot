@@ -23,6 +23,6 @@ public class Order {
 
     private Long userId;
     private String product;
-    private Integer price;
+    private Double price;
     
 }

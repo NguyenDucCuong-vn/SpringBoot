@@ -3,6 +3,7 @@ package com.example.user_service.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.user_service.UserDTO;
 import com.example.user_service.model.User;
 import com.example.user_service.repository.UserRepository;
 
@@ -33,9 +34,11 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id){
-        return userRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("User not found"));
+    public UserDTO getUserById(@PathVariable Long id){
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return new UserDTO(user.getId(), user.getName(), user.getEmail());
+
     }
     
 }
