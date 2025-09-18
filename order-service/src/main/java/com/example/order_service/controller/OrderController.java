@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.cache.annotation.CacheEvict;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.example.order_service.UserClient;
 import com.example.order_service.UserDTO;
 import com.example.order_service.OrderResponse;
+import com.example.order_service.service.OrdersService;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,23 +29,26 @@ public class OrderController {
 
     private final OrderRepository orderRepository;
     private final UserClient userClient;
+    private final OrdersService ordersService;
 
     @PostMapping
-    public Order createOrder(@RequestBody Order order) {
+    @CacheEvict(value = "allOrders", allEntries = true) 
+    public Order placeOrder(@RequestBody Order order) {
         var authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof Long) {
             Long userId = (Long) authentication.getPrincipal();
             order.setUserId(userId);
         }
-        return orderRepository.save(order);
+        return ordersService.createOrder(order);
     }
     
 
     @GetMapping
     public List<Order> getAllOrder() {
-        return orderRepository.findAll();
+        return ordersService.getAllOrders();
     }
     
+
     @GetMapping("/{id}")
     public OrderResponse getOrderById(@PathVariable Long id) 
     {       
