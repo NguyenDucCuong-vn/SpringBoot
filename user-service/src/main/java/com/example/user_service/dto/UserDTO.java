@@ -1,4 +1,4 @@
-package com.example.order_service;
+package com.example.user_service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
 public class UserDTO {
     private Long id;
     private String name;

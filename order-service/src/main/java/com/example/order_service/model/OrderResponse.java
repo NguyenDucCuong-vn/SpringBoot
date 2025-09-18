@@ -1,4 +1,6 @@
-package com.example.order_service;
+package com.example.order_service.model;
+
+import com.example.order_service.dto.UserDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -31,10 +31,10 @@ public class EmailService {
             helper.setText(body, true);
 
             mailSender.send(message);
-            System.out.println("📧 Gửi email thành công!");
+            System.out.println("Gửi email thành công!");
 
         } catch (MessagingException e) {
-            System.err.println("❌ Gửi email thất bại: " + e.getMessage());
+            System.err.println(" Gửi email thất bại: " + e.getMessage());
         }
     }
 }
