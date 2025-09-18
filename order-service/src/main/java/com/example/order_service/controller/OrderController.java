@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.order_service.model.Order;
+import com.example.order_service.model.OrderResponse;
 import com.example.order_service.repository.OrderRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -17,8 +18,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.example.order_service.UserClient;
-import com.example.order_service.UserDTO;
-import com.example.order_service.OrderResponse;
+import com.example.order_service.dto.UserDTO;
 import com.example.order_service.service.OrdersService;
 
 @RestController

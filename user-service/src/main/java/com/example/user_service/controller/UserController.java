@@ -3,7 +3,7 @@ package com.example.user_service.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.user_service.UserDTO;
+import com.example.user_service.dto.UserDTO;
 import com.example.user_service.model.User;
 import com.example.user_service.repository.UserRepository;
 import com.example.user_service.service.UserService;

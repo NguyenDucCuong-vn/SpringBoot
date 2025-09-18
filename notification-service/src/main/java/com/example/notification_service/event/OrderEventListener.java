@@ -2,8 +2,6 @@ package com.example.notification_service.event;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
-
-import com.example.notification_service.event.OrderPlacedEvent;
 import com.example.notification_service.service.EmailService;
 
 import lombok.RequiredArgsConstructor;
